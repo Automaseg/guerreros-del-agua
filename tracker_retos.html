@@ -349,6 +349,8 @@ function renderSummary() {
   let counts = [0,0,0,0], juntas = 0, totalDays = 0;
   CLIENTES.forEach(c => {
     for (let i = 0; i < 7; i++) {
+      const esFuturo = weekOffset > 0 || (weekOffset === 0 && i > getTodayDayIndex());
+      if (esFuturo) continue;
       const cell = data[key][c][i];
       counts[cell.turno]++;
       if (cell.junta) juntas++;
