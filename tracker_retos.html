@@ -23,72 +23,73 @@
     --red-row: #ffe5e5;
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
-  body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; min-height: 100vh; padding: 20px 14px 48px; }
-  header { text-align: center; margin-bottom: 20px; }
-  header h1 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(2rem, 6vw, 3.2rem); letter-spacing: 0.12em; color: var(--text); line-height: 1; }
+  body { background: var(--bg); color: var(--text); font-family: 'Inter', sans-serif; min-height: 100vh; padding: 12px 14px 40px; }
+
+  header { text-align: center; margin-bottom: 8px; }
+  header h1 { font-family: 'Bebas Neue', sans-serif; font-size: clamp(1.8rem, 5vw, 2.6rem); letter-spacing: 0.12em; color: var(--text); line-height: 1; }
   header h1 span { color: var(--blue); }
-  header p { font-size: 0.78rem; color: var(--text-dim); margin-top: 4px; letter-spacing: 0.06em; text-transform: uppercase; }
-  .sync-status { text-align: center; font-size: 0.72rem; margin-bottom: 12px; padding: 4px 12px; border-radius: 20px; display: inline-block; }
+  header p { font-size: 0.72rem; color: var(--text-dim); margin-top: 2px; letter-spacing: 0.06em; text-transform: uppercase; }
+
+  .sync-wrap { text-align: center; margin-bottom: 8px; }
+  .sync-status { font-size: 0.7rem; padding: 3px 10px; border-radius: 20px; display: inline-block; }
   .sync-ok   { background: #e6f9ee; color: #14532d; border: 1px solid #22c55e; }
   .sync-err  { background: #fff0f0; color: #9b0000; border: 1px solid #e53e3e; }
   .sync-wait { background: #fffbea; color: #7a5a00; border: 1px solid #f5c400; }
-  .sync-wrap { text-align: center; margin-bottom: 14px; }
-  .week-nav { display: flex; align-items: center; justify-content: center; gap: 14px; margin-bottom: 18px; }
-  .week-nav button { background: white; border: 1px solid var(--border); color: var(--blue); font-size: 1rem; padding: 6px 14px; border-radius: 8px; cursor: pointer; font-weight: 700; transition: background 0.15s; }
+
+  /* SUMMARY ARRIBA */
+  .summary { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; margin-bottom: 10px; }
+  .sum-card { background: white; border: 1px solid var(--border); border-radius: 10px; padding: 6px 14px; text-align: center; min-width: 70px; box-shadow: 0 2px 6px rgba(0,0,0,0.05); }
+  .sum-card .sum-icon  { font-size: 1.1rem; }
+  .sum-card .sum-num   { font-family: 'Bebas Neue', sans-serif; font-size: 1.4rem; line-height: 1.1; color: var(--text); }
+  .sum-card .sum-label { font-size: 0.6rem; font-weight: 700; color: var(--text-dim); letter-spacing: 0.05em; text-transform: uppercase; }
+  .sum-card.bad  { border-color: var(--red-border);    background: #fee2e2; }
+  .sum-card.warn { border-color: #16a34a; background: #dcfce7; }
+  .sum-card.good { border-color: #ca8a04; background: #fde047; }
+  .sum-card.noconf { border-color: #3b82f6; background: #dbeafe; }
+  .week-nav { display: flex; align-items: center; justify-content: center; gap: 12px; margin-bottom: 10px; }
+  .week-nav button { background: white; border: 1px solid var(--border); color: var(--blue); font-size: 0.9rem; padding: 4px 12px; border-radius: 8px; cursor: pointer; font-weight: 700; transition: background 0.15s; }
   .week-nav button:hover { background: #e8eeff; }
-  #week-label { font-size: 0.82rem; font-weight: 700; color: var(--text); letter-spacing: 0.04em; min-width: 200px; text-align: center; }
-  .legend { display: flex; flex-wrap: wrap; gap: 8px 14px; justify-content: center; margin-bottom: 20px; }
-  .legend-item { display: flex; align-items: center; gap: 6px; font-size: 0.75rem; font-weight: 600; color: var(--text-dim); background: white; border: 1px solid var(--border); border-radius: 20px; padding: 4px 12px; }
-  .table-wrap { overflow-x: auto; border-radius: 14px; border: 1px solid var(--border); background: white; box-shadow: 0 4px 24px rgba(0,0,0,0.07); }
-  table { width: 100%; min-width: 700px; border-collapse: collapse; }
+  #week-label { font-size: 0.78rem; font-weight: 700; color: var(--text); letter-spacing: 0.04em; min-width: 180px; text-align: center; }
+
+  .legend { display: flex; flex-wrap: wrap; gap: 6px 12px; justify-content: center; margin-bottom: 10px; }
+  .legend-item { display: flex; align-items: center; gap: 5px; font-size: 0.7rem; font-weight: 600; color: var(--text-dim); background: white; border: 1px solid var(--border); border-radius: 20px; padding: 3px 10px; }
+
+  .table-wrap { overflow-x: auto; border-radius: 12px; border: 1px solid var(--border); background: white; box-shadow: 0 4px 20px rgba(0,0,0,0.07); }
+  table { width: 100%; min-width: 680px; border-collapse: collapse; }
   thead tr { background: #f7f9fc; border-bottom: 2px solid var(--border); }
-  thead th { padding: 10px 6px; font-size: 0.65rem; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: var(--text-dim); text-align: center; }
-  thead th:first-child { text-align: left; padding-left: 18px; min-width: 160px; color: var(--text); }
+  thead th { padding: 8px 5px; font-size: 0.62rem; font-weight: 700; letter-spacing: 0.07em; text-transform: uppercase; color: var(--text-dim); text-align: center; }
+  thead th:first-child { text-align: left; padding-left: 14px; min-width: 140px; color: var(--text); }
   thead th.today-col { background: #e8f0ff; color: var(--blue) !important; border-top: 3px solid var(--blue); }
   tbody tr { border-bottom: 1px solid var(--border); }
   tbody tr:last-child { border-bottom: none; }
-  tbody tr.row-gold   { background: var(--green-row); }
-  tbody tr.row-delay  { background: var(--orange-row); }
-  tbody tr.row-noconf { background: var(--gray-row); }
-  tbody tr.row-absent { background: var(--red-row); }
-  tbody tr.row-absent td:first-child { border-left: 6px solid var(--red-border); }
-  tbody tr.row-delay  td:first-child { border-left: 6px solid var(--orange-border); }
-  tbody tr.row-noconf td:first-child { border-left: 6px solid var(--gray-border); }
-  tbody tr.row-gold   td:first-child { border-left: 6px solid var(--green-border); }
-  td { padding: 7px 3px; text-align: center; vertical-align: middle; }
+  tbody tr.row-gold, tbody tr.row-delay, tbody tr.row-noconf, tbody tr.row-absent { background: white; }
+  td { padding: 5px 3px; text-align: center; vertical-align: middle; }
   td:first-child { padding-left: 14px; text-align: left; }
   td.today-col { background: rgba(30,111,255,0.04); }
-  .client-name-wrap { display: flex; flex-direction: column; gap: 3px; }
-  .client-label { font-size: 0.9rem; font-weight: 700; color: var(--text); white-space: nowrap; }
-  .client-badge { font-size: 0.62rem; font-weight: 800; padding: 2px 8px; border-radius: 20px; white-space: nowrap; letter-spacing: 0.04em; text-transform: uppercase; display: inline-block; width: fit-content; }
-  .badge-gold   { background: #fef08a; color: #7a5a00; border: 1.5px solid var(--gold-border); }
-  .badge-delay  { background: #fed7aa; color: #7a3800; border: 1.5px solid var(--orange-border); }
-  .badge-noconf { background: #e5e7eb; color: #444;    border: 1.5px solid var(--gray-border); }
-  .badge-absent { background: #fecaca; color: #9b0000; border: 1.5px solid var(--red-border); }
-  .day-cell { display: flex; flex-direction: column; align-items: center; gap: 5px; }
-  .turno-btn { background: none; border: none; cursor: pointer; font-size: 1.35rem; line-height: 1; padding: 4px 6px; border-radius: 8px; transition: transform 0.12s; }
+
+  .client-label { font-size: 0.85rem; font-weight: 700; color: var(--text); white-space: nowrap; }
+
+  .day-cell { display: flex; flex-direction: column; align-items: center; gap: 3px; border-radius: 8px; padding: 4px 2px; }
+  .day-cell.estado-gold   { background: #fde047; }
+  .day-cell.estado-delay  { background: #dcfce7; }
+  .day-cell.estado-noconf { background: #dbeafe; }
+  .day-cell.estado-absent { background: #fee2e2; }
+
+  .turno-btn { background: none; border: none; cursor: pointer; font-size: 1.2rem; line-height: 1; padding: 3px 5px; border-radius: 6px; transition: transform 0.12s; }
   .turno-btn:hover { transform: scale(1.25); }
-  .turno-btn.absent-pulse { animation: pulse-red 1.3s infinite; }
-  @keyframes pulse-red { 0%, 100% { filter: drop-shadow(0 0 2px #e53e3e); } 50% { filter: drop-shadow(0 0 9px #e53e3e); } }
+
   .junta-pill { cursor: pointer; border: none; background: none; padding: 0; }
-  .junta-status { font-size: 0.6rem; font-weight: 800; letter-spacing: 0.04em; text-transform: uppercase; padding: 3px 7px; border-radius: 20px; white-space: nowrap; transition: transform 0.15s; display: block; }
+  .junta-status { font-size: 0.55rem; font-weight: 800; letter-spacing: 0.04em; text-transform: uppercase; padding: 2px 6px; border-radius: 20px; white-space: nowrap; transition: transform 0.15s; display: block; }
   .junta-status.ok { background: #bbf7d0; color: #14532d; border: 1.5px solid #22c55e; }
-  .junta-status.no { background: #fecaca; color: #7f1d1d; border: 1.5px solid var(--red-border); animation: pulse-junta 1.6s infinite; }
-  @keyframes pulse-junta { 0%, 100% { box-shadow: 0 0 0 0 rgba(229,62,62,0); } 50% { box-shadow: 0 0 0 3px rgba(229,62,62,0.3); } }
+  .junta-status.no { background: #fecaca; color: #7f1d1d; border: 1.5px solid var(--red-border); }
   .junta-pill:hover .junta-status { transform: scale(1.08); }
-  .summary { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-top: 18px; }
-  .sum-card { background: white; border: 1px solid var(--border); border-radius: 12px; padding: 10px 18px; text-align: center; min-width: 90px; box-shadow: 0 2px 8px rgba(0,0,0,0.05); }
-  .sum-card .sum-icon  { font-size: 1.4rem; }
-  .sum-card .sum-num   { font-family: 'Bebas Neue', sans-serif; font-size: 1.8rem; line-height: 1.1; color: var(--text); }
-  .sum-card .sum-label { font-size: 0.68rem; font-weight: 700; color: var(--text-dim); letter-spacing: 0.05em; text-transform: uppercase; }
-  .sum-card.bad  { border-color: var(--red-border);    background: #fff0f0; }
-  .sum-card.warn { border-color: var(--orange-border); background: #fff4e5; }
-  .sum-card.good { border-color: var(--green-border);  background: var(--green-row); }
-  .actions { display: flex; gap: 12px; justify-content: center; margin-top: 20px; flex-wrap: wrap; }
-  .btn { font-family: 'Inter', sans-serif; font-size: 0.8rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; padding: 10px 22px; border-radius: 8px; border: none; cursor: pointer; transition: transform 0.12s; }
+
+  .actions { display: flex; gap: 12px; justify-content: center; margin-top: 14px; }
+  .btn { font-family: 'Inter', sans-serif; font-size: 0.75rem; font-weight: 700; letter-spacing: 0.05em; text-transform: uppercase; padding: 8px 18px; border-radius: 8px; border: none; cursor: pointer; transition: transform 0.12s; }
   .btn:hover { transform: translateY(-2px); }
   .btn-reset { background: white; color: #e53e3e; border: 1.5px solid #e53e3e; }
-  footer { text-align: center; margin-top: 28px; font-size: 0.72rem; color: var(--text-dim); letter-spacing: 0.04em; }
+
+  footer { text-align: center; margin-top: 20px; font-size: 0.68rem; color: var(--text-dim); letter-spacing: 0.04em; }
 </style>
 </head>
 <body>
@@ -102,6 +103,8 @@
   <span id="sync-status" class="sync-status sync-wait">⏳ Conectando...</span>
 </div>
 
+<div class="summary" id="summary-bar"></div>
+
 <div class="week-nav">
   <button onclick="changeWeek(-1)">◀</button>
   <span id="week-label"></span>
@@ -114,9 +117,9 @@
   <div class="legend-item">❓ Sin confirmación</div>
   <div class="legend-item">❌ Falta / Ausencia</div>
   <div class="legend-item" style="gap:4px">
-    <span style="background:#bbf7d0;color:#14532d;border:1.5px solid #22c55e;border-radius:20px;padding:1px 7px;font-size:0.68rem;font-weight:800">✓ JUNTA</span>
+    <span style="background:#bbf7d0;color:#14532d;border:1.5px solid #22c55e;border-radius:20px;padding:1px 6px;font-size:0.65rem;font-weight:800">✓ JUNTA</span>
     /
-    <span style="background:#fecaca;color:#7f1d1d;border:1.5px solid #e53e3e;border-radius:20px;padding:1px 7px;font-size:0.68rem;font-weight:800">✗ SIN JUNTA</span>
+    <span style="background:#fecaca;color:#7f1d1d;border:1.5px solid #e53e3e;border-radius:20px;padding:1px 6px;font-size:0.65rem;font-weight:800">✗ SIN JUNTA</span>
   </div>
 </div>
 
@@ -128,8 +131,6 @@
     <tbody id="tracker-body"></tbody>
   </table>
 </div>
-
-<div class="summary" id="summary-bar"></div>
 
 <div class="actions">
   <button class="btn btn-reset" onclick="resetSemana()">↺ Reiniciar semana</button>
@@ -159,9 +160,7 @@ const CLIENTES = ['La Mission','Medimexico','Centerpiece','Cryoinfra','Grupo Bac
 const DIAS     = ['LUN','MAR','MIÉ','JUE','VIE','SÁB','DOM'];
 const ESTADOS  = ['🥇','⏰','❓','❌'];
 const ESTADO_PRIORITY = [0, 2, 1, 3];
-const ROW_CLASS   = ['row-gold','row-delay','row-noconf','row-absent'];
-const BADGE_CLASS = ['badge-gold','badge-delay','badge-noconf','badge-absent'];
-const BADGE_TEXT  = ['⭐ DORADO','⚠️ RETRASO','❓ SIN CONF','🚨 FALTA'];
+const ROW_CLASS = ['row-gold','row-delay','row-noconf','row-absent'];
 
 let weekOffset = 0;
 let data = {};
@@ -169,8 +168,8 @@ let data = {};
 function setSyncStatus(state) {
   const el = document.getElementById('sync-status');
   if (state === 'ok')   { el.className = 'sync-status sync-ok';   el.textContent = '✅ Sincronizado'; }
-  if (state === 'err')  { el.className = 'sync-status sync-err';   el.textContent = '⚠️ Sin conexión — modo local'; }
-  if (state === 'wait') { el.className = 'sync-status sync-wait';  el.textContent = '⏳ Guardando...'; }
+  if (state === 'err')  { el.className = 'sync-status sync-err';  el.textContent = '⚠️ Sin conexión — modo local'; }
+  if (state === 'wait') { el.className = 'sync-status sync-wait'; el.textContent = '⏳ Guardando...'; }
 }
 
 function getMonday(offset) {
@@ -183,9 +182,7 @@ function getMonday(offset) {
   return mon;
 }
 
-function getWeekKey(offset) {
-  return getMonday(offset).toISOString().slice(0,10);
-}
+function getWeekKey(offset) { return getMonday(offset).toISOString().slice(0,10); }
 
 function getDaysOfWeek(offset) {
   const mon = getMonday(offset);
@@ -228,10 +225,8 @@ async function loadData() {
     if (snap.exists()) {
       data[key] = snap.data().clientes;
       localStorage.setItem('intseg_retos_v3', JSON.stringify(data));
-      setSyncStatus('ok');
-    } else {
-      setSyncStatus('ok');
     }
+    setSyncStatus('ok');
   } catch(e) {
     console.warn('Firebase error:', e);
     setSyncStatus('err');
@@ -257,17 +252,13 @@ function worstState(clienteData) {
 function cycleTurno(cliente, diaIdx) {
   const key = getWeekKey(weekOffset);
   data[key][cliente][diaIdx].turno = (data[key][cliente][diaIdx].turno + 1) % 4;
-  saveData();
-  renderBody();
-  renderSummary();
+  saveData(); renderBody(); renderSummary();
 }
 
 function toggleJunta(cliente, diaIdx) {
   const key = getWeekKey(weekOffset);
   data[key][cliente][diaIdx].junta = !data[key][cliente][diaIdx].junta;
-  saveData();
-  renderBody();
-  renderSummary();
+  saveData(); renderBody(); renderSummary();
 }
 
 async function resetSemana() {
@@ -288,7 +279,7 @@ function renderHeader() {
     const th = document.createElement('th');
     const dd = String(d.getDate()).padStart(2,'0');
     const mm = String(d.getMonth()+1).padStart(2,'0');
-    th.innerHTML = `${DIAS[i]}<br><span style="font-size:0.6rem;font-weight:400">${dd}/${mm}</span>`;
+    th.innerHTML = `${DIAS[i]}<br><span style="font-size:0.58rem;font-weight:400">${dd}/${mm}</span>`;
     if (i === todayIdx) th.classList.add('today-col');
     row.appendChild(th);
   });
@@ -308,28 +299,24 @@ function renderBody() {
     const tr = document.createElement('tr');
     tr.className = ROW_CLASS[worst];
     const tdName = document.createElement('td');
-    const wrap = document.createElement('div');
-    wrap.className = 'client-name-wrap';
     const label = document.createElement('span');
     label.className = 'client-label';
     label.textContent = cliente;
-    const badge = document.createElement('span');
-    badge.className = `client-badge ${BADGE_CLASS[worst]}`;
-    badge.textContent = BADGE_TEXT[worst];
-    wrap.appendChild(label);
-    wrap.appendChild(badge);
-    tdName.appendChild(wrap);
+    tdName.appendChild(label);
     tr.appendChild(tdName);
     for (let i = 0; i < 7; i++) {
       const td = document.createElement('td');
       if (i === todayIdx) td.classList.add('today-col');
       const cell = clienteData[i];
       const div = document.createElement('div');
-      div.className = 'day-cell';
+
+      const esFuturo = weekOffset > 0 || (weekOffset === 0 && i > getTodayDayIndex());
+      const estadoClass = ['estado-gold','estado-delay','estado-noconf','estado-absent'];
+      div.className = `day-cell${esFuturo ? '' : ' ' + estadoClass[cell.turno]}`;
+
       const btn = document.createElement('button');
       btn.className = 'turno-btn' + (cell.turno === 3 ? ' absent-pulse' : '');
       btn.textContent = ESTADOS[cell.turno];
-      btn.title = 'Clic para cambiar estado del turno';
       btn.onclick = () => cycleTurno(cliente, i);
       div.appendChild(btn);
       const pill = document.createElement('button');
@@ -340,6 +327,14 @@ function renderBody() {
       status.textContent = cell.junta ? '✓ JUNTA' : '✗ SIN JUNTA';
       pill.appendChild(status);
       div.appendChild(pill);
+
+      if (esFuturo) {
+        btn.style.opacity = '0.25';
+        btn.style.pointerEvents = 'none';
+        pill.style.opacity = '0.25';
+        pill.style.pointerEvents = 'none';
+      }
+
       td.appendChild(div);
       tr.appendChild(td);
     }
@@ -363,7 +358,7 @@ function renderSummary() {
   [
     { icon:'🥇', label:'Dorados',  n: counts[0], cls:'good' },
     { icon:'⏰', label:'Retrasos', n: counts[1], cls:'warn' },
-    { icon:'❓', label:'Sin conf', n: counts[2], cls:'' },
+    { icon:'❓', label:'Sin conf', n: counts[2], cls:'noconf' },
     { icon:'❌', label:'Faltas',   n: counts[3], cls:'bad' },
     { icon:'📋', label:'Juntas',   n: `${juntas}/${totalDays}`, cls:'' },
   ].forEach(it => {
@@ -382,7 +377,8 @@ function render() {
   renderSummary();
 }
 
-// Arranque
+window.changeWeek = changeWeek;
+window.resetSemana = resetSemana;
 loadData().then(() => render());
 </script>
 </body>
