@@ -156,7 +156,7 @@ const firebaseConfig = {
 const app = initializeApp(firebaseConfig);
 const db  = getFirestore(app);
 
-const CLIENTES = ['La Mission','Medimexico','Centerpiece','Cryoinfra','Grupo Baca','TDS','Auxitrol','Harmony'];
+const CLIENTES = ['La Mission','Medimexico','Centerpiece','Cryoinfra','Grupo Baca','TDS','Auxitrol','Harmony','Rockwest'];
 const DIAS     = ['LUN','MAR','MIÉ','JUE','VIE','SÁB','DOM'];
 const ESTADOS  = ['🥇','⏰','❓','❌'];
 const ESTADO_PRIORITY = [0, 2, 1, 3];
@@ -223,7 +223,11 @@ async function loadData() {
   try {
     const snap = await getDoc(doc(db, 'semanas', key));
     if (snap.exists()) {
-      data[key] = snap.data().clientes;
+      const saved = snap.data().clientes;
+      CLIENTES.forEach(c => {
+        if (!saved[c]) saved[c] = Array.from({length:7}, () => ({turno:0, junta:false}));
+      });
+      data[key] = saved;
       localStorage.setItem('intseg_retos_v3', JSON.stringify(data));
     }
     setSyncStatus('ok');
